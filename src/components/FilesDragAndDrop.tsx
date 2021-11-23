@@ -142,12 +142,14 @@ type FilesDragAndDropProps = {
   onDrop?: (files: File[]) => void;
   onDragging?: (st: boolean) => void;
   files?: Image[];
+  onChange: any;
 };
 
 export function FilesDragAndDrop({
   onUpload,
   onDrop,
   files,
+  onChange,
 }: FilesDragAndDropProps) {
   const drop = useRef<HTMLDivElement>(null);
   const [counter, setCounter] = useState(0);
@@ -229,6 +231,13 @@ export function FilesDragAndDrop({
                 className="sr-only"
                 accept="image/gif, image/jpeg, image/png"
                 multiple
+                onChange={(e) => {
+                  const files = e.target.files;
+                  if (files && files.length > 0) {
+                    setDropped(true);
+                  }
+                  onChange(e);
+                }}
               />
             </label>
             <p className="pl-1">or drag and drop</p>

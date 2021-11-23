@@ -67,6 +67,11 @@ function App() {
           onDrop={(files) => onDrop(files)}
           formats={["jpg", "png"]}
           files={files}
+          onChange={(e: any) => {
+            onDrop(
+              Object.entries(e.target.files).map((file) => file[1] as File)
+            );
+          }}
         />
         {files.length > 0 && (
           <button
