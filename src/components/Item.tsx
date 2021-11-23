@@ -77,7 +77,7 @@ export function Item({ progress = 0, fileName, size, file, url }: ItemProps) {
           <small className="text-sm font-medium text-gray-500">{size} b</small>
         </Text>
         {url && (
-          <Copy>
+          <Copy onClick={() => navigator.clipboard.writeText(url)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 text-gray-500"
