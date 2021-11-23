@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "./firebase";
 import { v4 as uuidv4 } from "uuid";
