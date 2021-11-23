@@ -58,6 +58,8 @@ function App() {
     }
   };
 
+  const onSubmit = () => handleUpload(files);
+
   return (
     <div className="bg-gray-100 h-screen w-screen items-center justify-center flex">
       <div className="bg-white shadow-lg p-8 rounded-lg">
@@ -66,6 +68,14 @@ function App() {
           formats={["jpg", "png"]}
           files={files}
         />
+        {files.length > 0 && (
+          <button
+            className="bg-purple-500 text-white p-2 rounded-lg"
+            onClick={() => onSubmit()}
+          >
+            Upload
+          </button>
+        )}
       </div>
     </div>
   );
