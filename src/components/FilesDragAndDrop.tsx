@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from "react";
-import { Image } from "../types";
+import { FilesDragAndDropProps } from "../types";
 import styled from "styled-components";
 import { Item } from "./";
+import { ImageIcon, ArrowIcon } from "./Icons";
 
 const Container = styled.div<{ onOver: number; dropped: boolean }>`
   display: flex;
@@ -36,6 +37,7 @@ const Container = styled.div<{ onOver: number; dropped: boolean }>`
 
 const List = styled.ul<{ dropped: boolean }>`
   width: 100%;
+  padding-top: 0.5rem;
   li {
     margin-bottom: 0.75rem;
     animation-name: fadeIn;
@@ -84,6 +86,7 @@ const Place = styled.div<{ dropped: boolean; onOver: number }>`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  z-index: ${({ onOver }) => onOver - 1};
   opacity: ${({ onOver }) => onOver};
   transition: opacity 0.4s ease, transform 0.4s ease;
 `;
@@ -111,7 +114,7 @@ const Placeholder = styled.div<{ onOver: number; dropped: boolean }>`
   top: 50%;
   width: 100%;
   text-align: center;
-  z-index: 1;
+  z-index: ${({ dropped }) => (dropped ? -1 : 0)};
   transform: ${({ onOver, dropped }) => {
     if (dropped || onOver) {
       return "translate(-50%, -100%)";
@@ -138,15 +141,6 @@ const Hint = styled.div`
   pointer-events: none;
   min-width: max-content;
 `;
-
-type FilesDragAndDropProps = {
-  onUpload?: (files: Image[]) => void;
-  formats?: string[];
-  onDrop?: (files: File[]) => void;
-  onDragging?: (st: boolean) => void;
-  files?: Image[];
-  onChange: any;
-};
 
 export function FilesDragAndDrop({
   onUpload,
@@ -207,20 +201,7 @@ export function FilesDragAndDrop({
     <>
       <Container ref={drop} onOver={counter} dropped={dropped}>
         <Placeholder onOver={counter} dropped={dropped}>
-          <svg
-            className="mx-auto h-12 w-12 text-gray-400"
-            stroke="currentColor"
-            fill="none"
-            viewBox="0 0 48 48"
-            aria-hidden="true"
-          >
-            <path
-              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ImageIcon className="mx-auto h-12 w-12 text-gray-400" />
           <div className="flex text-sm text-gray-600 justify-center">
             <label
               htmlFor="file-upload"
@@ -250,9 +231,7 @@ export function FilesDragAndDrop({
         <Place onOver={counter} dropped={dropped}>
           <UploadIcon>
             <div>
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M5.2319,10.6401 C5.5859,11.0641 6.2159,11.1221 6.6399,10.7681 L10.9999,7.1351 L10.9999,19.0001 C10.9999,19.5521 11.4479,20.0001 11.9999,20.0001 C12.5519,20.0001 12.9999,19.5521 12.9999,19.0001 L12.9999,7.1351 L17.3599,10.7681 C17.7849,11.1221 18.4149,11.0641 18.7679,10.6401 C19.1219,10.2161 19.0649,9.5851 18.6399,9.2321 L12.6399,4.2321 C12.5929,4.1921 12.5369,4.1731 12.4849,4.1431 C12.4439,4.1191 12.4079,4.0911 12.3629,4.0731 C12.2459,4.0271 12.1239,4.0001 11.9999,4.0001 C11.8759,4.0001 11.7539,4.0271 11.6369,4.0731 C11.5919,4.0911 11.5559,4.1191 11.5149,4.1431 C11.4629,4.1731 11.4069,4.1921 11.3599,4.2321 L5.3599,9.2321 C4.9359,9.5851 4.8779,10.2161 5.2319,10.6401"></path>
-              </svg>
+              <ArrowIcon />
             </div>
           </UploadIcon>
           <Hint>Drop your files to upload</Hint>

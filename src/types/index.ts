@@ -14,3 +14,12 @@ export interface IActions {
   setProgress: string;
   setURL: string;
 }
+
+export type FilesDragAndDropProps = {
+  onUpload?: (files: Image[]) => void;
+  formats?: string[];
+  onDrop?: (files: File[]) => void;
+  onDragging?: (st: boolean) => void;
+  files?: Image[];
+  onChange: any;
+};
