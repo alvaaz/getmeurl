@@ -109,6 +109,9 @@ const Placeholder = styled.div<{ onOver: number; dropped: boolean }>`
   position: absolute;
   left: 50%;
   top: 50%;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
   transform: ${({ onOver, dropped }) => {
     if (dropped || onOver) {
       return "translate(-50%, -100%)";
@@ -218,7 +221,7 @@ export function FilesDragAndDrop({
               strokeLinejoin="round"
             />
           </svg>
-          <div className="flex text-sm text-gray-600">
+          <div className="flex text-sm text-gray-600 justify-center">
             <label
               htmlFor="file-upload"
               className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
