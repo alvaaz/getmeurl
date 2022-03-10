@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import dotenv from "dotenv";
+import { ModalProvider } from "./components/Modal/context";
 
 dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ModalProvider>
+      <App />
+    </ModalProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

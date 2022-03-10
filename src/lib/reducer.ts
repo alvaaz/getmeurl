@@ -26,7 +26,7 @@ export function reducer(state: State, action: any) {
         ...state,
         images: state.images
           ? state.images.map((image) => {
-              if (image.id === action.payload.id) {
+              if (image.name === action.payload.name) {
                 return {
                   ...image,
                   progress: action.payload.progress,
@@ -42,7 +42,7 @@ export function reducer(state: State, action: any) {
         ...state,
         images: state.images
           ? state.images.map((image) => {
-              if (image.id === action.payload.id) {
+              if (image.name === action.payload.name) {
                 return {
                   ...image,
                   url: action.payload.url,

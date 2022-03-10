@@ -1,5 +1,5 @@
 export type Image = {
-  id: string | null;
+  name: string | null;
   progress: number;
   file: File | null;
   url: string | null;
@@ -18,8 +18,14 @@ export interface IActions {
 export type FilesDragAndDropProps = {
   onUpload?: (files: Image[]) => void;
   formats?: string[];
-  onDrop?: (files: File[]) => void;
   onDragging?: (st: boolean) => void;
-  files?: Image[];
-  onChange: any;
+};
+
+export type ItemProps = {
+  percent?: any;
+  fileName: string;
+  size: string;
+  file: File | null;
+  url: string | null;
+  loading?: boolean;
 };
