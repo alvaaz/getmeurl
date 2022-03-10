@@ -16,3 +16,9 @@ The challenge was create an image uploader app using Firebase for the first time
 - Choose images from a folder.
 - See a loader when while uploading.
 - Copy a link from the uploaded images.
+
+## TO-DO
+
+- [ ] Transfer all Tailwind's styles to styled-components
+- [ ] Improve animations
+- [ ] UI improvements in modal

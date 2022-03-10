@@ -11,7 +11,7 @@ import ReactDOM from "react-dom";
 import { List, Container } from "../DragNDrop/style";
 
 export function Modal() {
-  const { modalContent, setModalContent } = useModal();
+  const { modalContent } = useModal();
 
   const modalRoot = document.getElementById("modal-root");
 
