@@ -2,6 +2,12 @@
 
 The challenge was create an image uploader app using Firebase for the first time. Creating interactions and micro-interactions to make the UX as smooth as possible
 
+## Necessary steps
+
+You need an account in Firebase to get all api-keys in environment variables.
+
+Copy .env.sample and change its name to .env and update it.
+
 ## Stack
 
 [React](https://reactjs.org)
